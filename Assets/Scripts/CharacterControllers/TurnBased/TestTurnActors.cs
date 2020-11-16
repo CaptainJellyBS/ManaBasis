@@ -4,22 +4,18 @@ using UnityEngine;
 
 public class TestTurnActors : TurnActor
 {
-    Rigidbody rb;
-    public int amountOfTurnsTilDeath;
+    GridMovement mover;
 
     protected override void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        mover = GetComponent<GridMovement>();
         base.Start();
 
     }
     public override IEnumerator Act()
     {
-        rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+        mover.Move(0, 1);
         initiative = TurnManager.Instance.GetLastActorInitiative() + 1;
-        amountOfTurnsTilDeath -= 1;
-        if(amountOfTurnsTilDeath < 1) { Destroy(gameObject); yield break; }
-
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(0.2f);
     }
 }

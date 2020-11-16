@@ -31,4 +31,9 @@ public class GridObject : MonoBehaviour
     {
         GridPosition = startPos;
     }
+
+    protected void OnDestroy()
+    {
+        GridManager.Instance.grid[(int)gridPosition.x, (int)gridPosition.y].Remove(this);
+    }
 }
