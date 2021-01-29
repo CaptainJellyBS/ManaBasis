@@ -38,19 +38,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if(Input.GetKey(forward))
         {
-            rb.MovePosition(transform.position + transform.forward * forwardSpeed * Time.deltaTime);
+            transform.position += transform.forward * forwardSpeed * Time.deltaTime;
         }
         if (Input.GetKey(left))
         {
-            rb.MovePosition(transform.position - transform.right * forwardSpeed * Time.deltaTime);
+            transform.position -= transform.right * forwardSpeed * Time.deltaTime;
         }
         if (Input.GetKey(right))
         {
-            rb.MovePosition(transform.position + transform.right * forwardSpeed * Time.deltaTime);
+            transform.position += transform.right * forwardSpeed * Time.deltaTime;
         }
         if (Input.GetKey(back))
         {
-            rb.MovePosition(transform.position - transform.forward * forwardSpeed * Time.deltaTime);
+            transform.position -= transform.forward * forwardSpeed * Time.deltaTime;
         }
 
         if(Input.GetKeyDown(jump) && grounded)

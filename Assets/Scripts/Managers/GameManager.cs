@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    UnityEvent deathEvents, winEvents;
+    public UnityEvent deathEvents, winEvents;
 
     public LivesUI lives;
 
