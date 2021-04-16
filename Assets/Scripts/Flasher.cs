@@ -18,12 +18,12 @@ public class Flasher : MonoBehaviour
 
     public void Flash(Color color, float FlashTime, int amount)
     {
-        StartCoroutine(FlashC(color, FlashTime, FlashTime, amount / (FlashTime * 2)));
+        StartCoroutine(FlashC(color, FlashTime, FlashTime, amount * (FlashTime * 2)));
     }
 
     public void Flash(Color color, float offTime, float onTime, int amount)
     {
-        StartCoroutine(FlashC(color, offTime, onTime, amount / (offTime + onTime)));
+        StartCoroutine(FlashC(color, offTime, onTime, amount * (offTime + onTime)));
     }
 
     public void Flash(Color color, float FlashTime, float totalDuration)

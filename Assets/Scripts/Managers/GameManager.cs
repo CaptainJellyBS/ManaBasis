@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public UnityEvent deathEvents, winEvents;
 
-    public LivesUI lives;
-
     private void Awake()
     {
         Instance = this;
@@ -28,19 +26,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region debug
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.End))
-        {
-            lives.Lives++;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Home))
-        {
-            lives.Lives--;
-        }
-    }
 
     #endregion
 }

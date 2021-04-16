@@ -13,12 +13,12 @@ public class Blinker : MonoBehaviour
 
     public void Blink(float blinkTime, int amount)
     {
-        StartCoroutine(BlinkC(blinkTime, blinkTime, amount/(blinkTime*2)));
+        StartCoroutine(BlinkC(blinkTime, blinkTime, amount*(blinkTime*2)));
     }
 
     public void Blink(float offTime, float onTime, int amount)
     {
-        StartCoroutine(BlinkC(offTime, onTime, amount/(offTime+onTime)));
+        StartCoroutine(BlinkC(offTime, onTime, amount*(offTime+onTime)));
     }
 
     public void Blink(float blinkTime, float totalDuration)

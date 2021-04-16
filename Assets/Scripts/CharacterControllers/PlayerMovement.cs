@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     public KeyCode jump = KeyCode.Space;
 
-    public float forwardSpeed, strafeSpeed, backSpeed;
+    public float moveSpeed;
     public float jumpForce;
     public bool grounded;
 
@@ -36,24 +36,27 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleInput()
     {
+        Vector3 vel = Vector3.zero;
         if(Input.GetKey(forward))
         {
-            transform.position += transform.forward * forwardSpeed * Time.deltaTime;
+            vel += transform.forward * moveSpeed;
+        }   
+        if (Input.GetKey(back))
+        {
+            vel -= transform.forward * moveSpeed;
         }
         if (Input.GetKey(left))
         {
-            transform.position -= transform.right * forwardSpeed * Time.deltaTime;
+            vel -= transform.right * moveSpeed;
+
         }
         if (Input.GetKey(right))
         {
-            transform.position += transform.right * forwardSpeed * Time.deltaTime;
+            vel += transform.right * moveSpeed;
         }
-        if (Input.GetKey(back))
-        {
-            transform.position -= transform.forward * forwardSpeed * Time.deltaTime;
-        }
+        rb.velocity = new Vector3(vel.x, rb.velocity.y, vel.z);
 
-        if(Input.GetKeyDown(jump) && grounded)
+        if (Input.GetKeyDown(jump) && grounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
