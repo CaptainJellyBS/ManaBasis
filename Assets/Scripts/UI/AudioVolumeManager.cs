@@ -7,7 +7,16 @@ public class AudioVolumeManager : MonoBehaviour
     public static AudioVolumeManager Instance { get; private set; }
     private void Awake()
     {
-        if(Instance != null) { Destroy(this); return; }
+        if(Instance != null) 
+        { 
+            foreach(AudioSource a in GetComponentsInChildren<AudioSource>())
+            {
+                a.Stop();
+            }
+
+            Destroy(this); 
+            return; 
+        }
         Instance = this;
        
         DontDestroyOnLoad(this);
