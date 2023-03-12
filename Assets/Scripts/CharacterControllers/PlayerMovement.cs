@@ -39,22 +39,24 @@ public class PlayerMovement : MonoBehaviour
         Vector3 vel = Vector3.zero;
         if(Input.GetKey(forward))
         {
-            vel += transform.forward * moveSpeed;
+            vel += transform.forward;
         }   
         if (Input.GetKey(back))
         {
-            vel -= transform.forward * moveSpeed;
+            vel -= transform.forward;
         }
         if (Input.GetKey(left))
         {
-            vel -= transform.right * moveSpeed;
+            vel -= transform.right;
 
         }
         if (Input.GetKey(right))
         {
-            vel += transform.right * moveSpeed;
+            vel += transform.right;
         }
-        rb.velocity = new Vector3(vel.x, rb.velocity.y, vel.z);
+		vel = vel.normalized;
+
+        rb.velocity = new Vector3(vel.x * moveSpeed, rb.velocity.y, vel.z * moveSpeed);
 
         if (Input.GetKeyDown(jump) && grounded)
         {
